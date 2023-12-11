@@ -8,57 +8,50 @@ interface Props {
 
 const { href, title, body, img } = Astro.props;
 ---
-<main class=" grid w-full rounded-md mb-2  hover:-translate-y-1 hover:shadow-md transition ease-in border-2">
-	<li class="link-card">
+<main id="contenedor" class="flex justify-between  h-[15vh] w-full text-ellipsis rounded-md mb-3  hover:-translate-y-1 hover:shadow-md transition ease-in border-2">
+	<li class="grid grid-rows-2 z-10 w-[150%] list-none  transition-[transform] duration-500  ease-in-out text-ellipsis overflow-hidden">
 		<a href={href}>
-			<h2>
+			<h2 class="text-2xl">
 				{title}
-				<span>&rarr;</span>
 			</h2>
 			<p>
 				{body}
 			</p>
 		</a>
+		<button class="bg-violet-700 w-full pointer rounded-b-md" id="mostrar">Mostrar mas</button>
 	</li>
-	<img src={img} class="h-full w-full" alt={title}>
+	<div class="w-full flex items-center justify-center">
+		<span class="hidden">&rarr;</span>
+		<img src={img} class="h-full w-full border-2" alt={title}>
+	</div>
+	<div id="modal" class="hidden z-30 w-screen h-screen bg-black fixed top-0 left-0 bottom-0 right-0">
+		<div class=" w-[90%] mt-24 mx-auto" >
+			<h1 class="text-3xl mb-4">{title}</h1>
+			<div class="h-[40%] w-full">
+				<img src={img} alt={title} class="w-full h-full ">
+			</div>
+			<p>{body}</p>
+		</div>
+	</div>
 </main>
+
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
+
 </style>
+<script >
+
+  
+
+	  const mostrar = document.getElementById('mostrar');
+	  const modal = document.getElementById('modal');
+	  const contenedor = document.getElementById('contenedor');
+  
+	  
+	  mostrar?.addEventListener('click', (e) => {
+		if (contenedor && modal ) {
+			modal.style.display = 'block'
+			contenedor.style.display = 'node'
+			console.log('ejecutado');
+		}
+	  });
+  </script>
