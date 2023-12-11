@@ -3,22 +3,25 @@ interface Props {
 	title: string;
 	body: string;
 	href: string;
+	img:string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, body, img } = Astro.props;
 ---
-
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
+<main class=" grid w-full rounded-md mb-2  hover:-translate-y-1 hover:shadow-md transition ease-in border-2">
+	<li class="link-card">
+		<a href={href}>
+			<h2>
+				{title}
+				<span>&rarr;</span>
+			</h2>
+			<p>
+				{body}
+			</p>
+		</a>
+	</li>
+	<img src={img} class="h-full w-full" alt={title}>
+</main>
 <style>
 	.link-card {
 		list-style: none;

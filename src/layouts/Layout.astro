@@ -17,9 +17,60 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<header class=" z-10 sticky top-0 left-0 w-screen bg-gradient-to-r nav from-[#270e49] to-[#d6bbf8] h-20 text-white p-4 flex items-center justify-between">
+
+				<a href="" class="logo">
+					<h3>Juan-Moreno</h3>
+				</a>
+
+				<div class="h-full sm:hidden">
+					<a href="#" class="h-full" id="open">
+						<img class="h-full" src="../../public/menu.png" class="nav_icon" >
+					</a>
+					<a href="#" class="h-full hidden close" id="close">
+						<img class="h-full" src="../../public/cross.png" alt="">
+					</a>
+				</div>
+
+
+				<div class="hidden fixed top-20 left-0 right-0 bottom-0 bg-[rgba(0,0,0,.5)] w-screen h-screen transition ease-in" id="fondo">
+					<nav class=" z-10 grid fixed  top-20 bottom-0 right-0 place-items-center bg-[rgb(0,0,0)] clipeado transition ease-in" id="menu">
+						<a href="#" class="nav__link text-3xl text-white">sobre mi</a>
+						<a href="#" class="nav__link text-3xl text-white">proyectos</a>
+						<a href="#" class="nav__link text-3xl text-white">reclutame</a>
+					</nav>
+				</div>
+		</header>
 		<slot />
 	</body>
 </html>
+<script>
+	const nav = document.getElementById('menu')
+	const xClose = document.getElementById('close')
+	const hamburguesa = document.getElementById('open')
+	const fondo = document.getElementById('fondo')
+	hamburguesa?.addEventListener('click',()=>{
+		hamburguesa.classList.add('desaparecer');
+		nav?.classList.add('abierto')
+		xClose?.classList.add('aparecer')
+		fondo?.classList.add('aparecer')
+		
+	})
+	xClose?.addEventListener('click',()=>{
+
+		hamburguesa?.classList.remove('desaparecer');
+		nav?.classList.remove('abierto')
+		xClose?.classList.remove('aparecer')
+		fondo?.classList.remove('aparecer')
+	})
+	fondo?.addEventListener('click',()=>{
+
+		hamburguesa?.classList.remove('desaparecer');
+		nav?.classList.remove('abierto')
+		xClose?.classList.remove('aparecer')
+		fondo?.classList.remove('aparecer')
+	})
+</script>
 <style is:global>
 	:root {
 		--accent: 136, 58, 234;
@@ -32,6 +83,7 @@ const { title } = Astro.props;
 			white 60%
 		);
 	}
+
 	html {
 		font-family: system-ui, sans-serif;
 		background: #13151a;
@@ -48,4 +100,23 @@ const { title } = Astro.props;
 			Courier New,
 			monospace;
 	}
+	.clipeado{
+		clip-path: circle(0% at top right);
+		transition: clip-path .4s;
+	}
+	.clipeado.abierto{
+		clip-path: circle(150% at top right);
+		@apply w-[70%];
+		transition: clip-path .4s;
+
+	}
+	.aparecer{
+		display: block;
+		transition: transform .4s;
+	}
+	.desaparecer{
+		display: none;
+		transition: transform .4s;
+	}
+
 </style>
