@@ -46,7 +46,7 @@ const { href, title, body, img } = Astro.props;
 </style>
 <script >
 	// Esta función verifica si un elemento está en el viewport
-function isElementInViewport(el) {
+function isElementInViewport(el:any) {
   const rect = el.getBoundingClientRect();
   return (
     rect.top >= 0 &&
