@@ -52,12 +52,19 @@ const { title } = Astro.props;
 			</header>
 			<slot />
 			<footer class="hidden sm:block h-auto mt-4 bg-sky-950   text-white p-4  text-center">
-				<ul class="flex items-center justify-between  ">
+				<ul class="flex items-center justify-between text-sky-300  ">
 					<li>
-						<a href="">Hecho por: Juan Sebastian Moreno</a>
+						<a href="">Hecho por: <span class="text-gradient">Juan Sebastian Moreno</span></a>
 					</li>
 					<li>
-						<a href="">Lenguajes y frameworks usado: Html,Css, JS, Astro, TawilwundCss , tailwindanimated </a>
+						<a href="">Lenguajes y frameworks usados: </a>
+						<div class="flex">
+							<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="">
+							<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="">
+							<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="">
+							<img src="https://img.shields.io/badge/Astro-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" alt="">
+							<img src="" alt="">
+						</div>
 					</li>
 				</ul>
 			</footer>
