@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Presentacion from "../components/Presentacion.astro";
+---
+
+<div class="bg-[#20252c] ">
+
+  <Layout title="always that you need is me..DIO">
+    <div class="text-[#fafafa] bg-[#20252c] mt-4 mb-4 mx-auto md:w-[70vw] sm:w-[60vw] imagen w-screen  p-4">
+      <header class="flex ">
+        <img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/about_me.gif" class="hidden sm:block w-24 h-auto shadow-xl aspect-video" alt="">
+        <div class="ml-4">
+          <h1 class="text-4xl ">
+            Hola, soy Juan-Sebastian.
+          </h1>
+          <div class="w-full mt-4 flex flex-row sm:flex">
+            <a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" class="" alt="" /></a>
+            <a href=""><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" class="" alt="" /></a>
+            <a href=""><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" class="" alt="" /></a>
+            <a href=""><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" class="" alt="" /></a>
+          </div>
+        </div>
+      </header>
+      <section class="mt-8">
+        <h3 class="text-3xl mb-4 text-sky-600">Mis comienzos en el mundo del desarrollo.</h3>
+        <p class="text-[#eee]">
+          como todos o almenos la gran mayoria que estudia y se dedica al mundo
+          del desarrollo me ah interesado la tecnologia desde una muy temprana
+          edad y eh tenido una fascinacion por esta y el desarrollar soluciones
+          ingeniosas como un pro o que me viese como un hacker al estar en la
+          compu.
+          <br />
+           cuanto mayor era mi edad mayor mi fascinacion por la tecnologia
+          hasta que empece en el mundo del desarrollo por mi cuenta a los
+          16 años de edad viendo tutoriales, guias, libros, practicando,
+          practicando y.... practicando mucho mas.
+        </p>
+      </section>
+      <section class="mt-8 mb-8">
+        <h3 class=" text-3xl mb-4 text-sky-600">
+          Conocimientos.
+        </h3>
+        <p class="">
+          me gusta orientarme por los resultados y siguiendo esta corriente de pensamiento aprendi frameworks y teccnologias que me den resultados de la forma mas rapida y profesional posible ademas de tener salida la laboral como lo es el diseño web con astro,next bases de datos como mongodb entre muchos otros.
+        </p>
+      </section>
+      <section class="mt-8 mb-8">
+        <h3 class=" text-3xl mb-4 text-sky-600">
+          A que aspiro.
+        </h3>
+        <p class="">
+          aspiro a trabajar con lideres, experimentados con muy buenas practicas para mejorar y aprender de ellos
+        </p>
+      </section>
+      <Presentacion body=" amo lo que hago, aprecio lo que tengo y aspiro a mas de lo que quiero." img="#" footer="Full-Stack Developer" name="Juan Sebastian Moreno Mosquera"/>
+    </div>
+  </Layout>
+</div>
+
+
+<style>
+  *{
+    text-wrap: pretty;
+  }
+
+    @media screen and (max-width:640px) {      
+      .imagen{
+        background-image: url("https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/about_me.gif");
+        background-repeat: no-repeat;
+        background-position: right -2px ;
+        background-size: 150px 120px ;
+      }
+    }
+
+</style>

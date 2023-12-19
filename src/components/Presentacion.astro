@@ -1,0 +1,36 @@
+---
+interface Props {
+    img:string,
+    body:string,
+    name:string,
+    footer:string
+
+}
+
+const {img, name, body,footer } = Astro.props;
+---
+<figure class="md:flex rounded-xl p-8 md:p-0 relative">
+    <img class=" z-40 w-24 h-24 md:w-48 md:h-auto max-md:mx-auto md:rounded-none sm5:hover:shadow-2xl hover:-translate-y-2 transition-all ease-in rounded-full" src={img} alt={name} width="384" height="512">
+    <div class="pt-6 md:p-8 text-center md:text-left space-y-4 ">
+      <blockquote>
+        <p class="text-lg font-medium "> 
+            {body}
+        </p>
+      </blockquote>
+      <figcaption class="font-medium">
+        <div class="text-sky-500 ">
+          {name}
+        </div>
+        <div class="text-slate-700 dark:text-slate-500">
+          {footer}
+        </div>
+      </figcaption>
+    </div>
+  </figure>
+<style>
+
+
+</style>
+<script>
+
+</script>
