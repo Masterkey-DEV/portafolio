@@ -1,104 +1,143 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-import Presentacion from'../components/Presentacion.astro';
+import Presentacion from '../components/Presentacion.astro';
+import SectionProyects from '../components/SectionProyects.astro';
+import Languages from '../components/Languages.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="text-white w-[90vw]  mx-auto overflow-hidden ">
-		<section class="mt-24 p-4 mx-auto w-[90vw] text-center">
-			<h2 class=" mx-auto text-4xl text-center block whitespace-nowrap border-r-4 border-solid w-[10.9ch] typing">
-				<span class="text-gradient  ">Juan Moreno</span>
-			</h2>
-			<hr class="w-[80vw] mx-auto">
-			<h3 class=" mt-4 text-2xl animate-fade-up animate-once animate-duration-1000 animate-delay-[1700ms] animate-ease-in-out">
-				<div class="  flex text-center items-center justify-center">
-					<p class=" ">
-						Desarrolador Trainee full-stack con excelentes capacidades de razonamiento, aprendizaje y resolucion de problemas
-					</p>
-				</div>
-			</h3>
-		</section>
-		<section class="text-center mt-12 bg-gradient-to-r from-purple-500 to-purple-300 text-transparent bg-clip-text">
-			<h3 class="text-3xl parraf">Conocimientos</h3>
-			<p  class="text-center sm:hidden mt-4 mb-4">
-				<a href="https://github.com/Masterkey-DEV">
-				  <img class="mx-auto" src="https://skillicons.dev/icons?i=tailwind,js,nodejs,mongodb,astro,react,nextjs,angular,git,python,fastapi,sqlite&perline=6" />
-				</a>
-			</p>
-			<a href="">
-				<ul class=" sm:flex w-full h-60 justify-center items-center hidden text-violet-100 ">
-	
-					<li class="h-44 rounded-xl w-36 hover:-translate-y-1 hover:shadow-xl transition ease-in ">Javascripts
-						<img src="https://cdn-icons-png.flaticon.com/128/5968/5968292.png" alt="Javascript">
-					</li>
-					<li class="h-44 rounded-xl w-36 hover:-translate-y-1 hover:shadow-xl transition ease-in ">Node-js
-						<img src="https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png" alt="Javascript">
-					</li>
-					<li class="h-44 rounded-xl w-36 hover:-translate-y-1 hover:shadow-xl transition ease-in ">React 
-						<img src="https://cdn-icons-png.flaticon.com/128/1126/1126012.png" alt="React">
-					</li>
-					<li class="h-44 rounded-xl w-36 hover:-translate-y-1 hover:shadow-xl transition ease-in ">Astro
-						<img src="https://astro.js.org/astro.png" alt="">
-					</li>
-					<li class="h-44 rounded-xl w-36 hover:-translate-y-1 hover:shadow-xl transition ease-in ">Python
-						<img src="https://cdn-icons-png.flaticon.com/128/5968/5968350.png" alt="Python">
-					</li>
-					<li class="h-44 rounded-xl w-36 hover:-translate-y-1 hover:shadow-xl transition ease-in ">SQL
-						<img src="https://cdn-icons-png.flaticon.com/128/4299/4299956.png" alt="SQL">
-					</li>
-				</ul>
-			</a>
-		</section>
-		<section class="mt-12 list-none mb-12">
-			<h3 class="text-3xl mb-4">Proyectos destacados</h3>
-			<div class=" sm:grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))]  grid-rows-[repeat(auto-fit,minmax(250px,300px))] gap-2 grid-row-[repeat(minmax(fill,1fr))]">
-				<li >
-					<Card title='E-comerce' body='un ecomerce con la API de platzy con filtros de busqueda y mas.' href='#' img="https://images.justwatch.com/poster/247615255/s332/temporada-5" />
-				</li>
-				<li >
-					<Card title='API Rick y Morty' body='una libreia de personajes con la API de rick y Morty con infinite-scroll y paginado ademas de filtros.' href='https://google.com' img="https://www.enter.co/wp-content/uploads/2023/01/Rick-morty-1-768x432.jpg" />
-				</li>
-				<li >
-					<Card title='Tik-Tak-Toe' body='el Mitico juego de Tik-Tak-Toe o tricky para los panas en React con guardado.' href='#' img="#" />
-				</li>
-			</div>
-		</section>
+<Layout title="the best developer for you">
+  <main class="text-white w-[90vw] mx-auto overflow-hidden">
+    <section class="mt-24 p-4 mx-auto w-[90vw] text-center">
+      <h2
+        class="mx-auto text-4xl text-center block whitespace-nowrap border-r-4 border-solid w-[10.9ch] typing"
+      >
+        <span class="text-gradient">Juan Moreno</span>
+      </h2>
+      <hr class="w-[80vw] mx-auto" />
+      <h3
+        class="mt-4 text-2xl animate-fade-up animate-once animate-duration-1000 animate-delay-[1700ms] animate-ease-in-out"
+      >
+        <div class="flex text-center items-center justify-center">
+          <p class="">
+            Desarrolador Trainee full-stack con excelentes capacidades de
+            razonamiento, aprendizaje y resolucion de problemas
+          </p>
+        </div>
+      </h3>
+    </section>
+    <section
+      class="text-center mt-12 bg-gradient-to-r from-purple-500 to-purple-300 text-transparent bg-clip-text"
+    >
+      <h3 class="text-3xl parraf">Conocimientos</h3>
+      <p class="text-center sm:hidden mt-4 mb-4">
+        <a href="https://github.com/Masterkey-DEV">
+          <img
+            class="mx-auto"
+            src="https://skillicons.dev/icons?i=tailwind,js,nodejs,mongodb,astro,react,nextjs,angular,git,python,fastapi,sqlite&perline=6"
+          />
+        </a>
+      </p>
+      <a href="">
+        <ul
+          class="list-none sm:flex w-full h-60 justify-center items-center hidden text-violet-100"
+        >
+          <Languages
+            tittle="Javascripts"
+            LanguageUrl="https://cdn-icons-png.flaticon.com/128/5968/5968292.png"
+          />
+          <Languages
+            tittle="Node-js"
+            LanguageUrl="https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png"
+          />
+          <Languages
+            tittle="React"
+            LanguageUrl="https://cdn-icons-png.flaticon.com/128/1126/1126012.png"
+          />
+          <Languages
+            tittle="Astro"
+            LanguageUrl="https://astro.js.org/astro.png"
+          />
+          <Languages
+            tittle="Python"
+            LanguageUrl="https://cdn-icons-png.flaticon.com/128/5968/5968350.png"
+          />
+          <Languages
+            tittle="SQL"
+            LanguageUrl="https://cdn-icons-png.flaticon.com/128/4299/4299956.png"
+          />
+        </ul>
+      </a>
+    </section>
+    <SectionProyects>
+      <li>
+        <Card
+          title="E-comerce"
+          body="un ecomerce con la API de platzy con filtros de busqueda y mas cosas que te sorprenderan."
+          href="#"
+          img="https://images.justwatch.com/poster/247615255/s332/temporada-5"
+        />
+      </li>
+      <li>
+        <Card
+          title="API Rick y Morty"
+          body="una libreia de personajes con la API de rick y Morty con infinite-scroll y paginado ademas de filtros."
+          href="https://google.com"
+          img="https://www.enter.co/wp-content/uploads/2023/01/Rick-morty-1-768x432.jpg"
+        />
+      </li>
+      <li>
+        <Card
+          title="Tik-Tak-Toe"
+          body="el Mitico juego de Tik-Tak-Toe o tricky para los panas en React con guardado."
+          href="#"
+          img="#"
+        />
+      </li>
+    </SectionProyects>
 
-		<Presentacion img='../../public/yo.jpg' body=" Mas de lo que estabas buscando y que ahora sabes que necesitas " name="Juan Moreno" footer="Full-Stack Junior trainee developer" />
-
-			
-	</main>
+    <Presentacion
+      img="../../public/me.enc"
+      body=" Mas de lo que estabas buscando y que ahora sabes que necesitas "
+      name="Juan Moreno"
+      footer="Full-Stack Junior trainee developer"
+    />
+  </main>
 </Layout>
 
 <style>
+  body {
+    background-color: #161a20;
+  }
 
-body {
-  background-color: #161a20;
-}
+  .typing {
+    animation:
+      escritura 1.6s steps(9),
+      blinky infinite 0.5s step-end alternate;
+    overflow: hidden;
+  }
 
-	.typing{
-		animation: escritura 1.6s steps(9), blinky infinite .5s step-end alternate;
-		overflow: hidden;
-	}
+  @keyframes escritura {
+    from {
+      width: 0;
+    }
+  }
 
-	@keyframes escritura{
-		from {width: 0}
-	}
-
-	@keyframes blinky{
-		50%{
-			border-color: transparent;
-		}
-	}
-	.text-gradient {
-  background-image: linear-gradient(to right, #8B5CF6, #EC4899, #EF4444); /* Definición del gradiente */
-  -webkit-background-clip: text; /* Define el área de aplicacion del background como el texto */
-  background-clip: text;
-  color: transparent; /* Hace el texto transparente */
-}
+  @keyframes blinky {
+    50% {
+      border-color: transparent;
+    }
+  }
+  .text-gradient {
+    background-image: linear-gradient(
+      to right,
+      #8b5cf6,
+      #ec4899,
+      #ef4444
+    ); /* Definición del gradiente */
+    -webkit-background-clip: text; /* Define el área de aplicacion del background como el texto */
+    background-clip: text;
+    color: transparent; /* Hace el texto transparente */
+  }
 </style>
-<script>
-
-
-</script>
+<script></script>

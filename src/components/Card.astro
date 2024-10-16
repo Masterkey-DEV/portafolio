@@ -1,96 +1,88 @@
 ---
-
-
-
 interface Props {
-	title: string;
-	body: string;
-	href: string;
-	img:string;
+  title: string;
+  body: string;
+  href: string;
+  img: string;
 }
 
 const { href, title, body, img } = Astro.props;
 ---
-<main id="contenedor" class=" cursor-pointer tarjetas sm:w-full sm:h-full sm:gap-2  opacity-0 sm:opacity-100 sm:rounded-md sm:grid  sm:grid-rows-2 flex justify-between  h-[22vh] min-h-fit w-full  overflow-hidden rounded-md mb-3  hover:-translate-y-2 hover:shadow-md transition-all ease-in border-2 ">
-	<li class="p-2 sm:row-span-1 grid  grid-rows-3 z-10 w-[150%] h-full list-none  transition-[transform] duration-500  ease-in-out text-ellipsis ">
-		<a class="h-full row-span-4 w-full  overflow-hidden " href={href} target="_blank">
-			<h2 class="text-2xl text-gradient">
-				{title}
-			</h2>
-			<p class="overflow-hidden h-full [text-wrap:wrap] text-ellipsis ">
-				{body}
-			</p>
-		</a>
-		
-	</li>
-	<div class="sm:row-span-1 h-full w-full flex items-center justify-center">
-		<img src={img} class="h-full w-full border-2 " alt='' >
-	</div>
+
+<main
+  id="contenedor"
+  class="cursor-pointer tarjetas sm:w-full sm:h-full sm:gap-2 opacity-0 sm:opacity-100 sm:rounded-md sm:grid sm:grid-rows-2 flex justify-between h-[22vh] min-h-fit w-full overflow-hidden rounded-md mb-3 hover:-translate-y-2 hover:shadow-md transition-all ease-in border-2"
+>
+  <li
+    class="p-2 sm:row-span-1 grid grid-rows-3 z-10 h-full w-full transition-[transform] duration-500 ease-in-out text-ellipsis"
+  >
+    <a
+      class="h-full row-span-4 w-full overflow-hidden"
+      href={href}
+      target="_blank"
+    >
+      <h2 class="text-2xl text-gradient">
+        {title}
+      </h2>
+      <p class="overflow-hidden h-full text-wrap w-full">
+        {body}
+      </p>
+    </a>
+  </li>
+  <div class="sm:row-span-1 h-full w-full flex items-center justify-center">
+    <img src={img} class="h-full w-full border-2" alt="" />
+  </div>
 </main>
 <style>
+  .slide-right {
+    @apply animate-fade-right animate-once opacity-100;
+  }
+  .opacity {
+    @apply opacity-100;
+  }
 
-
-.slide-right{
-	@apply animate-fade-right animate-once opacity-100;
-}
-.opacity{
-	@apply opacity-100;
-}
-
-.text-gradient {
-  background-image: linear-gradient(to right, #463a3a, #ffffff); /* Definición del gradiente de negro a blanco */
-  -webkit-background-clip: text; /* Define el área de aplicación del fondo como el texto */
-  background-clip: text;
-  color: transparent; /* Hace el texto transparente para mostrar el gradiente de fondo */
-}
+  .text-gradient {
+    background-image: linear-gradient(to right, #463a3a, #ffffff);
+    color: transparent;
+  }
 </style>
-<script >
-	// Esta función verifica si un elemento está en el viewport
-function isElementInViewport(el:any) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
+<script>
+  function isElementInViewport(el: any) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
 
-// Esta función aplica la clase 'slide-rigth' a los elementos que están en el viewport al cargar la página
-function applyEntradaClassOnLoad() {
-  const tarjetas = document.querySelectorAll('.tarjetas');
-  tarjetas.forEach((tarjeta) => {
-    if (isElementInViewport(tarjeta)) {
-	  tarjeta.classList.add('opacity')
-    }
+  function applyEntradaClassOnLoad() {
+    const tarjetas = document.querySelectorAll('.tarjetas');
+    tarjetas.forEach((tarjeta) => {
+      if (isElementInViewport(tarjeta)) {
+        tarjeta.classList.add('opacity');
+      }
+    });
+  }
+
+  applyEntradaClassOnLoad();
+
+  function callBack(entries: any) {
+    const elemnto: HTMLElement = entries[0].target;
+    elemnto.classList.add('slide-right');
+  }
+
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.75,
+  };
+
+  const observar = new IntersectionObserver(callBack, options);
+
+  const tarjetas = document.querySelectorAll('.tarjetas').forEach((elm) => {
+    observar.observe(elm);
   });
-}
-
-// Llama a la función para aplicar la clase 'entrada' a los elementos visibles al cargar la página
-applyEntradaClassOnLoad();
-
-// Resto de tu código para el IntersectionObserver sigue igual...
-
-
-	function callBack(entries: any){
-
-		const elemnto:HTMLElement = entries[0].target;
-		elemnto.classList.add('slide-right')
-
-
-	}
-
-	const options = {
-		root: null,
-		rootMargin: '0px',
-		threshold: .75
-	}
-
-	const observar = new IntersectionObserver(callBack,options)
-
-	const tarjetas = document.querySelectorAll('.tarjetas').forEach((elm)=>{
-		observar.observe(elm)
-	})
-
-  
-  </script>
+</script>

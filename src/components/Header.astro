@@ -1,0 +1,134 @@
+---
+interface Props {
+  name: string;
+}
+const { name } = Astro.props;
+---
+
+<header
+  class="z-[400] sticky top-0 left-0 w-screen bg-gradient-to-r nav from-[#270e49] to-[#d6bbf8] h-20 p-4 flex items-center justify-between"
+>
+  <a href="/" class="logo z-[9999]">
+    <h3 class="text-gradient">{name}</h3>
+  </a>
+
+  <div class="h-full sm:hidden">
+    <a href="#" class="h-full" id="open">
+      <img class="h-full" src="../../public/menu.png" class="nav_icon" />
+    </a>
+    <a href="#" class="h-full hidden close" id="close">
+      <img class="h-full" src="../../public/cross.png" alt="" />
+    </a>
+  </div>
+  <div
+    class="hidden fixed top-20 left-0 right-0 bottom-0 z-[9999] bg-[rgba(0,0,0,.5)] w-screen h-screen transition ease-in"
+    id="fondo"
+  >
+    <nav
+      class="z-[9999] grid fixed h-[calc(60vh-60px)] top-20 bottom-0 right-0 place-items-center bg-[rgb(0,0,0)] clipeado transition ease-in"
+      id="menu"
+    >
+      <a
+        href="/sobreMi"
+        class="nav__link text-3xl w-full h-full text-center hover:bg-slate-700 border-b-2 text-sky-600"
+        >sobre mi</a
+      >
+      <a
+        href="https://github.com/Masterkey-DEV"
+        class="nav__link text-3xl w-full h-full text-center hover:bg-slate-700 border-b-2 text-sky-600"
+        >proyectos</a
+      >
+      <a
+        href="https://www.linkedin.com/in/el-mejor-dev-para-ti"
+        class="nav__link text-3xl w-full h-full text-center hover:bg-slate-700 border-b-2 text-sky-600"
+        >reclutame</a
+      >
+    </nav>
+  </div>
+  <nav
+    class="nav-bar hidden sm:flex flex-row z-[9999] h-full items-center justify-btext-sky-600 bg-clip-text"
+    id="menu"
+  >
+    <a href="/sobreMi" class="text-sky-600 mx-2 z-[9999]">sobre mi</a>
+    <a
+      href="https://github.com/Masterkey-DEV"
+      class="text-sky-600 mx-2 z-[9999]">proyectos</a
+    >
+    <a
+      href="https://www.linkedin.com/in/el-mejor-dev-para-ti"
+      class="text-sky-600 mx-2 z-[9999]">reclutame</a
+    >
+  </nav>
+  <div
+    id="menu-backdrop"
+    class="absolute bg-black/15 rounded
+        left-[var(--left)] top-[var(--top)]
+        w-[var(--width)] h-[var(--height)]
+        transition-all duration-300 ease-in-out opacity-0 z-0"
+  >
+  </div>
+</header>
+<script>
+  const nav = document.getElementById('menu');
+  const xClose = document.getElementById('close');
+  const hamburguesa = document.getElementById('open');
+  const fondo = document.getElementById('fondo');
+  hamburguesa?.addEventListener('click', () => {
+    hamburguesa.classList.add('desaparecer');
+    nav?.classList.add('abierto');
+    xClose?.classList.add('aparecer');
+    fondo?.classList.add('aparecer');
+  });
+  xClose?.addEventListener('click', () => {
+    hamburguesa?.classList.remove('desaparecer');
+    nav?.classList.remove('abierto');
+    xClose?.classList.remove('aparecer');
+    fondo?.classList.remove('aparecer');
+  });
+  fondo?.addEventListener('click', () => {
+    hamburguesa?.classList.remove('desaparecer');
+    nav?.classList.remove('abierto');
+    xClose?.classList.remove('aparecer');
+    fondo?.classList.remove('aparecer');
+  });
+  ////////////////////////////////////////////////////////////////////////////
+  const listItem = document.querySelectorAll('.nav-bar a, .logo');
+  const menuBackdrop: HTMLElement = document.getElementById('menu-backdrop')!;
+  let timeoutId: number;
+
+  listItem.forEach((item) => {
+    item.addEventListener('mouseenter', () => {
+      const { left, top, width, height } = item.getBoundingClientRect();
+
+      menuBackdrop.style.setProperty('--left', `${left}px`);
+      menuBackdrop.style.setProperty('--top', `${top}px`);
+      menuBackdrop.style.setProperty('--height', `${height}px`);
+      menuBackdrop.style.setProperty('--width', `${width}px`);
+
+      menuBackdrop.style.opacity = '1';
+      menuBackdrop.style.visibility = 'visible';
+
+      // Cancela cualquier timeout existente
+      clearTimeout(timeoutId);
+    });
+
+    item.addEventListener('mouseleave', () => {
+      // Espera 200 ms antes de ocultar el fondo
+      timeoutId = setTimeout(() => {
+        menuBackdrop.style.opacity = '0';
+        menuBackdrop.style.visibility = 'hidden';
+      }, 200);
+    });
+  });
+
+  // Cancela el timeout si el mouse vuelve a entrar antes de que se oculte
+  menuBackdrop.addEventListener('mouseenter', () => {
+    clearTimeout(timeoutId);
+  });
+
+  // Oculta el fondo si el mouse sale completamente de la barra de navegación
+  menuBackdrop.addEventListener('mouseleave', () => {
+    menuBackdrop.style.opacity = '0';
+    menuBackdrop.style.visibility = 'hidden';
+  });
+</script>

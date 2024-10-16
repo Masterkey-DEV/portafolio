@@ -1,0 +1,14 @@
+---
+interface Props {
+  tittle: string;
+  LanguageUrl: string;
+}
+const { tittle, LanguageUrl } = Astro.props;
+---
+
+<li
+  class="h-44 rounded-xl w-36 hover:-translate-y-1 hover:shadow-xl transition ease-in"
+>
+  {tittle}
+  <img src={LanguageUrl} alt={tittle} class="mx-auto" />
+</li>
